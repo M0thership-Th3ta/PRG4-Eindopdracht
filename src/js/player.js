@@ -11,23 +11,24 @@ export class Player extends Actor {
     }
 
      onPreUpdate(engine) {
-        let xspeed = 0
-        let yspeed = 0
+        let xdirection = 0
+        let ydirection = 0
         let input = engine.input.keyboard
 
         if (input.isHeld(Keys.W) && this.pos.y > this.height/2) {
-        yspeed = -300;
+        ydirection = -1;
         }
         if (input.isHeld(Keys.S) && this.pos.y < engine.drawHeight - this.height/2) {
-        yspeed = 300;
+        ydirection = 1;
         }
         if (input.isHeld(Keys.A) && this.pos.x > this.width / 2) {
-        xspeed = -300;
+        xdirection = -1;
         }
         if (input.isHeld(Keys.D) && this.pos.x < engine.drawWidth - this.width / 2) {
-        xspeed = 300;
+        xdirection = 1;
         }
-        this.vel = new Vector(xspeed, yspeed);
+        let normalizeDirection = new Vector(xdirection, ydirection).normalize();
+        this.vel = normalizeDirection.scale(300);
 
         if (input.wasPressed(Keys.Space)) {
             this.shoot()
