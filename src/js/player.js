@@ -36,6 +36,18 @@ export class Player extends Actor {
     }
 
     shoot() {
-        console.log("💥 Shoot!")
+        let bullet = new Bullet()
+        bullet.pos = new Vector(this.pos.x, this.pos.y)
+        this.scene.add(bullet)
+    }
+}
+
+export class Bullet extends Actor {
+    constructor() {
+        super({ width: 10, height: 10 }) 
+    }
+
+    onInitialize(engine) {
+        this.events.on("exitviewport", () => this.kill());
     }
 }
