@@ -18,7 +18,7 @@ export class UI extends ScreenElement {
         this.addChild(this.scoreLabel)
 
         this.instructionsLabel = new Label({
-            text: 'WASD to move, Space to shoot',
+            text: 'WASD to move, Space to shoot, Press shift to use beam',
             pos: new Vector(0, 0),
             font: Resources.PixelFont.toFont({
                 unit: FontUnit.Px,

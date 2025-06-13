@@ -27,7 +27,7 @@ export class Bullet extends Actor {
     hitSomething(event) {
         if(event.other.owner instanceof Comet) {
             let randomDropChance = Math.random() * 100;
-            if (randomDropChance < 40) {
+            if (randomDropChance < 20) {
                 console.log("Dropped some Health!");
                 let health = new Health()
                 health.pos = new Vector(event.other.owner.pos.x, event.other.owner.pos.y)
