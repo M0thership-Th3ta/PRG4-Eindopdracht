@@ -45,6 +45,8 @@ export class Player extends Actor {
 export class Bullet extends Actor {
     constructor() {
         super({ width: 10, height: 10 }) 
+        this.graphics.use(Resources.Bullet.toSprite())
+        this.vel = new Vector(500, 0) // Bullet speed
     }
 
     onInitialize(engine) {
