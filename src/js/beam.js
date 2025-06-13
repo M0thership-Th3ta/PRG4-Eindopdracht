@@ -18,7 +18,6 @@ export class Beam extends Actor {
         if(event.other.owner instanceof Player) {
             event.other.owner.pickupBeam()
             this.kill()
-        
         }
     }
 

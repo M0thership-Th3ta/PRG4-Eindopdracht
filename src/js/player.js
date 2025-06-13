@@ -1,6 +1,7 @@
 import { Actor, Vector, Keys, CollisionType } from "excalibur"
 import { Resources } from './resources.js'
 import { Bullet } from './bullet.js'
+import { Player_Beam } from './player_beam.js'
 
 export class Player extends Actor {
     health = 3;
@@ -40,10 +41,13 @@ export class Player extends Actor {
             this.shoot()
         }
 
+        if (input.wasPressed(Keys.ShiftLeft)) {
+            this.shootBeam();
+        }
+
         if (this.health <= 0) {
                 this.kill();
-                engine.stop();
-                console.log("Game Over");
+                engine.goToScene('gameover');
             }
     }
 
@@ -61,6 +65,18 @@ export class Player extends Actor {
     pickupHealth() {
         this.health += 1;
         console.log(`Player health: ${this.health}`);
+    }
+
+    shootBeam() {
+        if (this.beams > 0) {
+            let beam = new Player_Beam(this);
+            beam.pos = new Vector((this.pos.x+50), this.pos.y)
+            this.scene.add(beam);
+            this.beams -= 1;
+            console.log(`Beams left: ${this.beams}`);
+        } else {
+            console.log("No beams left!");
+        }
     }
 }
 

@@ -5,10 +5,12 @@ import { Player, Player_Body, Player_Tail } from './player.js'
 import { Background } from './background.js'
 import { Comet } from './enemy_comet.js'
 import { Ship } from './enemy_ship.js'
+import { UI } from './UI.js'
+import { Gameover } from './gameover.js';
 
 export class Game extends Engine {
     score
-    scoreLabel
+    ui
     cometsPerSpawn = 1;
     shipsPerSpawn = 1;
 
@@ -23,11 +25,13 @@ export class Game extends Engine {
                 gravity: new Vector(0, 0),
             }
          })
+        this.add('gameover', new Gameover());
         this.start(ResourceLoader).then(() => this.startGame())
     }
 
     startGame() {
         const bg = new Background()
+        this.ui = new UI();
         this.player = new Player()
         this.bodySegments = [];
         this.tail = new Player_Tail(this.player);
@@ -35,6 +39,7 @@ export class Game extends Engine {
         this.shipsPerSpawn = 1;
         this.score = 0;
         this.add(bg)
+        this.add(this.ui)
         this.add(this.player)
         this.add(this.tail);
 
@@ -62,6 +67,7 @@ export class Game extends Engine {
         this.add(this.shipSpawnTimer);
         this.shipSpawnTimer.start();
     }
+
     // Ingame body segment and tail management, made with help from CoPilot
     onPreUpdate(engine, delta) {
         const desiredSegments = Math.max(0, this.player.health - 2);

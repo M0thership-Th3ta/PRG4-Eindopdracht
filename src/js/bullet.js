@@ -4,6 +4,7 @@ import { Comet } from './enemy_comet.js'
 import { Health } from "./health.js"
 import { Beam } from "./beam.js"
 import { Ship } from "./enemy_ship.js"
+import { UI } from "./UI.js"
 
 
 export class Bullet extends Actor {
@@ -37,7 +38,8 @@ export class Bullet extends Actor {
                 let beam = new Beam()
                 beam.pos = new Vector(event.other.owner.pos.x, event.other.owner.pos.y)
                 this.scene.add(beam)
-            } 
+            }
+            this.scene.engine.score += 10; 
             event.other.owner.kill()
             this.kill()
         }
@@ -55,7 +57,8 @@ export class Bullet extends Actor {
                 let beam = new Beam()
                 beam.pos = new Vector(event.other.owner.pos.x, event.other.owner.pos.y)
                 this.scene.add(beam)
-            } 
+            }
+            this.scene.engine.score += 50;
             event.other.owner.kill()
             this.kill()
         }
