@@ -33,7 +33,7 @@ export class Gameover extends Scene {
 
         const currentScoreLabel = new Label({
             text: `Score: ${currentScore}`,
-            pos: new Vector(engine.drawWidth / 2 - 100, 325),
+            pos: new Vector(engine.drawWidth / 2 - 100, 350),
             font: Resources.PixelFont.toFont({
                 unit: FontUnit.Px,
                 size: 20,
@@ -44,7 +44,7 @@ export class Gameover extends Scene {
 
         const highScoreLabel = new Label({
             text: `High Score: ${highScore}`,
-            pos: new Vector(engine.drawWidth / 2 - 100, 350),
+            pos: new Vector(engine.drawWidth / 2 - 100, 375),
             font: Resources.PixelFont.toFont({
                 unit: FontUnit.Px,
                 size: 20,
@@ -55,7 +55,7 @@ export class Gameover extends Scene {
 
         const startLabel = new Label({
             text: `Press Space to try again`,
-            pos: new Vector(engine.drawWidth / 2 - 100, 375),
+            pos: new Vector(engine.drawWidth / 2 - 100, 400),
             font: Resources.PixelFont.toFont({
                 unit: FontUnit.Px,
                 size: 20,
