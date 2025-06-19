@@ -4,7 +4,6 @@ import { Comet } from './enemy_comet.js'
 import { Health } from "./health.js"
 import { Beam } from "./beam.js"
 import { Ship } from "./enemy_ship.js"
-import { UI } from "./UI.js"
 
 
 export class Bullet extends Actor {

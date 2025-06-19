@@ -10,7 +10,7 @@ import { Gameover } from './gameover.js';
 
 export class Game extends Engine {
     score
-    ui
+    #ui
     cometsPerSpawn = 1;
     shipsPerSpawn = 1;
 
@@ -31,7 +31,7 @@ export class Game extends Engine {
 
     startGame() {
         const bg = new Background()
-        this.ui = new UI();
+        this.#ui = new UI();
         this.player = new Player()
         this.bodySegments = [];
         this.tail = new Player_Tail(this.player);
@@ -39,7 +39,7 @@ export class Game extends Engine {
         this.shipsPerSpawn = 1;
         this.score = 0;
         this.add(bg)
-        this.add(this.ui)
+        this.add(this.#ui)
         this.add(this.player)
         this.add(this.tail);
 
